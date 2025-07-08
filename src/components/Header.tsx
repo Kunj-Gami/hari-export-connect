@@ -44,13 +44,10 @@ const Header = () => {
       <header className="bg-white shadow-lg sticky top-0 z-50">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center py-4">
-            {/* Logo */}
-            <Link to="/" className="flex items-center space-x-3">
-              <div className="bg-gradient-to-r from-green-600 to-green-800 p-3 rounded-lg">
-                <span className="text-white font-bold text-xl">SHI</span>
-              </div>
+            {/* Company Name Only */}
+            <Link to="/" className="flex items-center">
               <div>
-                <h1 className="text-2xl font-bold text-gray-800">Shree Hari International</h1>
+                <h1 className="text-3xl font-bold text-gray-800">Shree Hari International</h1>
                 <p className="text-sm text-green-600">Premium Agro Exports</p>
               </div>
             </Link>
