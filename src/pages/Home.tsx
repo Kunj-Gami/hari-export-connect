@@ -1,26 +1,27 @@
-
 import { ArrowRight, CheckCircle, Globe, Shield, Truck, Users, Star, Quote } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 const Home = () => {
   const features = [
     {
-      icon: <Shield className="h-8 w-8 text-green-600" />,
+      icon: <Shield className="h-8 w-8" />,
       title: "Own Manufacturing Unit",
       description: "State-of-the-art processing facility with quality control"
     },
     {
-      icon: <CheckCircle className="h-8 w-8 text-green-600" />,
+      icon: <CheckCircle className="h-8 w-8" />,
       title: "Premium Quality Products",
       description: "Certified and tested for international standards"
     },
     {
-      icon: <Truck className="h-8 w-8 text-green-600" />,
+      icon: <Truck className="h-8 w-8" />,
       title: "Fast & Reliable Shipping",
       description: "Timely delivery with shipment tracking"
     },
     {
-      icon: <Globe className="h-8 w-8 text-green-600" />,
+      icon: <Globe className="h-8 w-8" />,
       title: "Global Export Experience",
       description: "Serving Middle East, Africa, Europe & Vietnam"
     }
@@ -30,25 +31,25 @@ const Home = () => {
     {
       title: "Coriander Seeds",
       description: "Premium Eagle & Scooter grades",
-      image: "/placeholder.svg",
+      image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       link: "/products"
     },
     {
       title: "Cumin Seeds",
       description: "Europe quality specifications",
-      image: "/placeholder.svg",
+      image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       link: "/products"
     },
     {
       title: "Cold Pressed Oils",
       description: "Wood-pressed groundnut & coconut oils",
-      image: "/placeholder.svg",
+      image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       link: "/products"
     },
     {
-      title: "Groundnut Kernels",
-      description: "Java & Bold varieties available",
-      image: "/placeholder.svg",
+      title: "Premium Spices",
+      description: "Turmeric, red chilli, and authentic spices",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       link: "/products"
     }
   ];
@@ -62,7 +63,7 @@ const Home = () => {
     },
     {
       name: "Nguyen Tran",
-      country: "Vietnam",
+      country: "Vietnam", 
       rating: 5,
       text: "Great experience working with Shree Hari International. Quality products and fair pricing."
     },
@@ -77,18 +78,15 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-green-900 via-green-800 to-green-700">
-        <div className="absolute inset-0 bg-black/40"></div>
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')`
-          }}
-        ></div>
-        
+      <section 
+        className="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"
+        }}
+      >
         <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
-            Premium <span className="text-green-400">Agro Exports</span>
+            Premium <span className="text-primary">Agro Exports</span>
           </h1>
           <p className="text-xl md:text-2xl mb-8 opacity-90 animate-fade-in">
             From Gujarat's Fields to Global Markets - Your Trusted Partner for Quality Spices, Seeds & Oils
@@ -96,14 +94,14 @@ const Home = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
             <Link
               to="/products"
-              className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-200 transform hover:scale-105 shadow-xl flex items-center justify-center space-x-2"
+              className="bg-primary text-primary-foreground px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-colors shadow-lg flex items-center justify-center space-x-2"
             >
               <span>View Products</span>
               <ArrowRight className="h-5 w-5" />
             </Link>
             <Link
               to="/contact"
-              className="border-2 border-white text-white hover:bg-white hover:text-green-800 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-200 transform hover:scale-105"
+              className="border-2 border-primary text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary hover:text-primary-foreground transition-colors"
             >
               Get Quote
             </Link>
@@ -112,32 +110,27 @@ const Home = () => {
       </section>
 
       {/* Quick Intro */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold text-gray-800 mb-6">Welcome to Shree Hari International</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            We are a leading exporter and manufacturer of premium quality agro commodities, spices, and cold-pressed oils. 
-            With our own manufacturing unit in Gujarat, we ensure consistent quality and timely delivery to global markets.
+          <h2 className="text-3xl font-bold mb-6 text-foreground">Leading Agro Exports from Gujarat</h2>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            Shree Hari International is a trusted manufacturer and exporter of premium quality spices, 
+            seeds, and cold-pressed oils. With our own processing unit and direct farm sourcing, 
+            we deliver authentic Indian products to global markets.
           </p>
         </div>
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-800 mb-4">Why Choose Us</h2>
-            <p className="text-xl text-gray-600">Trusted by importers worldwide for quality and reliability</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Why Choose Shree Hari International</h2>
+          <div className="grid md:grid-cols-4 gap-8">
             {features.map((feature, index) => (
-              <div key={index} className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-200 text-center">
-                <div className="flex justify-center mb-4">
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
+              <div key={index} className="text-center p-6 border border-border rounded-lg hover:shadow-lg transition-all duration-300 hover:border-primary/50 bg-card">
+                <div className="text-4xl mb-4 text-primary flex justify-center">{feature.icon}</div>
+                <h3 className="text-xl font-semibold mb-2 text-card-foreground">{feature.title}</h3>
+                <p className="text-muted-foreground">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -145,30 +138,26 @@ const Home = () => {
       </section>
 
       {/* Product Highlights */}
-      <section className="py-20 bg-white">
+      <section className="py-16 bg-muted/20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-800 mb-4">Featured Products</h2>
-            <p className="text-xl text-gray-600">Premium quality agro commodities for global markets</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Our Premium Products</h2>
+          <div className="grid md:grid-cols-4 gap-8">
             {products.map((product, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-200">
-                <div className="h-48 bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
-                  <div className="text-green-600 text-6xl font-bold">
-                    {product.title.charAt(0)}
-                  </div>
-                </div>
+              <div key={index} className="bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <img 
+                  src={product.image} 
+                  alt={product.title}
+                  className="w-full h-48 object-cover"
+                />
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">{product.title}</h3>
-                  <p className="text-gray-600 mb-4">{product.description}</p>
-                  <Link
-                    to={product.link}
-                    className="text-green-600 hover:text-green-700 font-semibold flex items-center space-x-2"
+                  <h3 className="text-xl font-semibold mb-2 text-card-foreground">{product.title}</h3>
+                  <p className="text-muted-foreground mb-4">{product.description}</p>
+                  <Link 
+                    to={product.link} 
+                    className="text-primary hover:text-primary/80 font-medium inline-flex items-center group"
                   >
-                    <span>View Details</span>
-                    <ArrowRight className="h-4 w-4" />
+                    Learn More 
+                    <span className="ml-1 transition-transform group-hover:translate-x-1">→</span>
                   </Link>
                 </div>
               </div>
@@ -178,81 +167,93 @@ const Home = () => {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 bg-gray-50">
+      <section 
+        className="py-16 bg-cover bg-center relative"
+        style={{
+          backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1517022812141-9b02ab6515c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"
+        }}
+      >
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="bg-white rounded-2xl shadow-xl p-12">
-              <div className="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-green-600 to-green-800 rounded-full flex items-center justify-center">
-                <span className="text-white text-4xl font-bold">MP</span>
-              </div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-2">Meet Nileshbhai Piprotar</h3>
-              <p className="text-green-600 font-semibold mb-6">Founder & CEO</p>
-              <div className="flex justify-center mb-6">
-                <Quote className="h-8 w-8 text-green-600" />
-              </div>
-              <blockquote className="text-xl text-gray-700 italic leading-relaxed">
-                "Our commitment to quality and customer satisfaction has made us a trusted partner for importers worldwide. 
-                We believe in building long-term relationships through transparency and excellence."
-              </blockquote>
-            </div>
+          <h2 className="text-3xl font-bold text-center mb-12 text-white">Meet Our Leadership</h2>
+          <div className="max-w-2xl mx-auto text-center">
+            <img 
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+              alt="Meet Nileshbhai Piprotar"
+              className="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-primary"
+            />
+            <h3 className="text-2xl font-semibold mb-2 text-white">Meet Nileshbhai Piprotar</h3>
+            <p className="text-primary mb-4 font-medium">Founder & CEO</p>
+            <blockquote className="text-lg italic text-gray-200">
+              "Our commitment to quality and customer satisfaction has made us a trusted partner 
+              for agro exports globally. We believe in building long-term relationships through 
+              transparency and excellence."
+            </blockquote>
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-20 bg-white">
+      {/* Testimonials Slider */}
+      <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-800 mb-4">What Our Clients Say</h2>
-            <p className="text-xl text-gray-600">Trusted by importers across the globe</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-gray-50 p-8 rounded-xl shadow-lg">
-                <div className="flex mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                <p className="text-gray-700 mb-6 italic">"{testimonial.text}"</p>
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mr-4">
-                    <span className="text-white font-bold">{testimonial.name.charAt(0)}</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-800">{testimonial.name}</p>
-                    <p className="text-green-600">{testimonial.country}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
+          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">What Our Clients Say</h2>
+          <div className="max-w-4xl mx-auto">
+            <Carousel
+              plugins={[
+                Autoplay({
+                  delay: 4000,
+                }),
+              ]}
+              className="w-full"
+            >
+              <CarouselContent>
+                {testimonials.map((testimonial, index) => (
+                  <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                    <div className="bg-card p-6 rounded-lg shadow-lg h-full border border-border hover:border-primary/50 transition-colors">
+                      <div className="flex items-center mb-4">
+                        {[...Array(testimonial.rating)].map((_, i) => (
+                          <span key={i} className="text-primary text-xl">★</span>
+                        ))}
+                      </div>
+                      <p className="text-muted-foreground mb-4 italic">"{testimonial.text}"</p>
+                      <div className="font-semibold text-card-foreground">{testimonial.name}</div>
+                      <div className="text-sm text-muted-foreground">{testimonial.country}</div>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="hidden md:flex" />
+              <CarouselNext className="hidden md:flex" />
+            </Carousel>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-green-600 to-green-800 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6">Ready to Start Your Import Journey?</h2>
-          <p className="text-xl mb-8 opacity-90">
-            Get premium quality products with competitive pricing and reliable service
-          </p>
+      {/* Call to Action */}
+      <section 
+        className="py-16 bg-primary text-primary-foreground relative overflow-hidden"
+        style={{
+          backgroundImage: "linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary)/0.8) 100%)"
+        }}
+      >
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <h2 className="text-3xl font-bold mb-6">Ready to Start Your Import Journey?</h2>
+          <p className="text-xl mb-8 opacity-90">Get premium quality agro products delivered globally</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/contact"
-              className="bg-white text-green-600 hover:bg-gray-100 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-200 transform hover:scale-105"
+            <Link 
+              to="/contact" 
+              className="bg-background text-foreground px-8 py-4 rounded-lg font-semibold hover:bg-background/90 transition-colors shadow-lg"
             >
               Request Quote
             </Link>
-            <Link
-              to="/products"
-              className="border-2 border-white text-white hover:bg-white hover:text-green-600 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-200 transform hover:scale-105"
+            <Link 
+              to="/products" 
+              className="border-2 border-background text-background px-8 py-4 rounded-lg font-semibold hover:bg-background hover:text-foreground transition-colors"
             >
               Browse Products
             </Link>
           </div>
         </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent"></div>
       </section>
     </div>
   );

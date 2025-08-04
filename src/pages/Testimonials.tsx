@@ -1,5 +1,7 @@
 
 import { Star, Quote, Globe } from 'lucide-react';
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 const Testimonials = () => {
   const testimonials = [
@@ -94,50 +96,63 @@ const Testimonials = () => {
         </div>
       </section>
 
-      {/* Testimonials Grid */}
-      <section className="py-20 bg-gray-50">
+      {/* Testimonials Slider */}
+      <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-200">
-                {/* Rating */}
-                <div className="flex mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-
-                {/* Quote Icon */}
-                <div className="flex justify-center mb-4">
-                  <Quote className="h-8 w-8 text-green-600" />
-                </div>
-
-                {/* Testimonial Text */}
-                <p className="text-gray-700 mb-6 italic leading-relaxed">
-                  "{testimonial.text}"
-                </p>
-
-                {/* Product */}
-                <div className="bg-green-50 px-3 py-1 rounded-full text-green-800 text-sm font-medium mb-4 inline-block">
-                  {testimonial.product}
-                </div>
-
-                {/* Customer Info */}
-                <div className="border-t pt-4">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="font-bold text-gray-800">{testimonial.name}</p>
-                      <p className="text-gray-600 text-sm">{testimonial.company}</p>
+          <Carousel
+            plugins={[
+              Autoplay({
+                delay: 4000,
+              }),
+            ]}
+            className="w-full"
+          >
+            <CarouselContent>
+              {testimonials.map((testimonial, index) => (
+                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                  <div className="bg-card rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 border border-border hover:border-primary/50 h-full">
+                    {/* Rating */}
+                    <div className="flex mb-4">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star key={i} className="h-5 w-5 text-primary fill-current" />
+                      ))}
                     </div>
-                    <div className="text-right">
-                      <div className="text-2xl mb-1">{testimonial.countryFlag}</div>
-                      <p className="text-green-600 font-semibold text-sm">{testimonial.country}</p>
+
+                    {/* Quote Icon */}
+                    <div className="flex justify-center mb-4">
+                      <Quote className="h-8 w-8 text-primary" />
+                    </div>
+
+                    {/* Testimonial Text */}
+                    <p className="text-muted-foreground mb-6 italic leading-relaxed">
+                      "{testimonial.text}"
+                    </p>
+
+                    {/* Product */}
+                    <div className="bg-primary/10 px-3 py-1 rounded-full text-primary text-sm font-medium mb-4 inline-block">
+                      {testimonial.product}
+                    </div>
+
+                    {/* Customer Info */}
+                    <div className="border-t border-border pt-4">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="font-bold text-card-foreground">{testimonial.name}</p>
+                          <p className="text-muted-foreground text-sm">{testimonial.company}</p>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-2xl mb-1">{testimonial.countryFlag}</div>
+                          <p className="text-primary font-semibold text-sm">{testimonial.country}</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            ))}
-          </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden md:flex" />
+            <CarouselNext className="hidden md:flex" />
+          </Carousel>
         </div>
       </section>
 
